@@ -1,4 +1,3 @@
-
 container_php       = app
 container_db        = db
 
@@ -27,10 +26,10 @@ ownership: #Set ownership
 #####################################
 
 start: #start docker containers @docker-compose up -d
-	@docker-compose up -d
+	@sudo docker-compose up -d
 
 stop: #stop docker containers
-	@docker-compose down
+	@sudo docker-compose down
 
 show: #show docker's containers
 	@sudo docker ps
@@ -42,4 +41,4 @@ connect_db: #Connect to DB container
 	@docker-compose exec $(container_db) bash
 
 run_server: #Run laravel dev server
-	@docker-compose exec $(container_php) php app/artisan serve --port=8000 --host=0.0.0.0
+	@docker-compose exec $(container_php) php app/artisan serve --port=8000 --host=0.0.0e

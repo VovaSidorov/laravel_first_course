@@ -12,6 +12,16 @@ DevDependencies:
 4. Install make
 
 Load docker images and create containers
+Load docker images and create containers || start containers
 ```bash
 make start
 ```
+
+Stop containers
+```bash
+make stop
+```
+
+Show all started containers
+```bash
+make show
