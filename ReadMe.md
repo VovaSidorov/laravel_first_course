@@ -25,3 +25,11 @@ make stop
 Show all started containers
 ```bash
 make show
+```
+
+Add SSL certificate
+```bash
+sudo docker run -it --rm --name certbot \
+            -v "/etc/letsencrypt:/etc/letsencrypt" \
+            -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+            -p 80:80  certbot/certbot certonly

@@ -8,13 +8,13 @@ container_db        = db
 #############################################
 
 composer_dep: #install composer dependency >> ./vendors
-	@docker run --rm -v $(CURDIR):/app composer install
+	@sudo docker run --rm -v $(CURDIR):/app composer install
 
 laravel_install: #Create new Laravel project
-	@docker-compose exec $(container_php) composer create-project --prefer-dist laravel/laravel app
+	@sudo docker-compose exec $(container_php) composer create-project --prefer-dist laravel/laravel app
 
 key: #generate APP key
-	@docker-compose exec $(container_php) php artisan key:generate
+	@sudo docker-compose exec $(container_php) php artisan key:generate
 
 ownership: #Set ownership
 	@sudo chown $(USER):$(USER) . -R
@@ -35,10 +35,10 @@ show: #show docker's containers
 	@sudo docker ps
 
 connect_app: #Connect to APP container
-	@docker-compose exec $(container_php) bash
+	@sudo docker-compose exec $(container_php) bash
 
 connect_db: #Connect to DB container
-	@docker-compose exec $(container_db) bash
+	@sudo docker-compose exec $(container_db) bash
 
-run_server: #Run laravel dev server
-	@docker-compose exec $(container_php) php app/artisan serve --port=8000 --host=0.0.0e
+connect_server: #Connect to container_server container
+	@docker-compose exec $(container_server) /bin/sh
